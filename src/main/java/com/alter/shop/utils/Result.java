@@ -16,9 +16,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Result {
-    private String status;  // 返回状态
-    private String message; // 返回信息描述
-    private Object data;  // 返回对象
+    /**
+     * 返回状态
+     */
+    private String status;
+    /**
+     * 返回信息描述
+     */
+    private String message;
+    /**
+     * 返回对象
+     */
+    private Object data;
 
 
     public static Result success(){

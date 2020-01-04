@@ -8,6 +8,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -24,7 +26,9 @@ import java.lang.reflect.Method;
  * @author: qiuweijie
  * @date: 2020/1/2  15:15
  */
+
 public class AuthenticationInterceptor implements HandlerInterceptor {
+    Logger loggerFactory = LoggerFactory.getLogger(AuthenticationInterceptor.class);
     @Autowired
     UserService userService;
 
@@ -33,6 +37,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 进入方法之前的 Token
         // 获取 Token
+        loggerFactory.debug("token");
         String token = request.getHeader("token");
         if (!(handler instanceof HandlerMethod)) {
             return true;
@@ -82,6 +87,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
     }
+
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {

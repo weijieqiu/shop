@@ -14,15 +14,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @author: qiuweijie
  * @date: 2020/1/2  15:17
  */
-//@Configuration
+@Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
-    //@Override
-    //public void addInterceptors(InterceptorRegistry registry) {
-    //    registry.addInterceptor(authenticationInterceptor())
-    //            .addPathPatterns("/**");
-    //}
-    //@Bean
-    //public AuthenticationInterceptor authenticationInterceptor() {
-    //    return new AuthenticationInterceptor();
-    //}
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authenticationInterceptor())
+                .addPathPatterns("/**");
+    }
+    @Bean
+    public AuthenticationInterceptor authenticationInterceptor() {
+        return new AuthenticationInterceptor();
+    }
 }
