@@ -20,21 +20,15 @@ public class UserServiceImpl implements UserService {
     private List<User> userList = new ArrayList<>();
 
     public void getUserlist(){
-        User user1 = new User("1","Admin","Admin123.");
-        User user2 = new User("2","limin","liming");
-        User user3 = new User("3","limi","liming");
-        User user4 = new User("4","lim","liming");
-        User user5 = new User("5","li","liming");
-        this.userList.add(user1);
-        this.userList.add(user2);
-        this.userList.add(user3);
-        this.userList.add(user4);
-        this.userList.add(user5);
+
 
 
     }
     public UserServiceImpl(){
-        getUserlist();
+        User user1 = new User("1","Admin","Admin123.","Admin@123.com", "123","超级管理员","启用");
+        User user2 = new User("2","User","User123.","User@123.com", "123","用户","启用");
+        this.userList.add(user1);
+        this.userList.add(user2);
     }
 
 
@@ -56,5 +50,14 @@ public class UserServiceImpl implements UserService {
             }
         }
         return null;
+    }
+
+    /**
+     * 得到用户列表
+     * @return
+     */
+    @Override
+    public List<User> getUserList() {
+        return userList;
     }
 }

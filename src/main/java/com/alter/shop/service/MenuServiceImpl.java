@@ -34,18 +34,18 @@ public class MenuServiceImpl implements MenuService {
     List<Menu> userMenuList = new ArrayList<>();
 
     public MenuServiceImpl() {
-        Menu shopList = new Menu(101, "商品列表", null, null);
-        Menu shopQuery = new Menu(102, "商品查询", null, null);
+        Menu shopList = new Menu(101, "商品列表", "shopList", null);
+        Menu shopQuery = new Menu(102, "商品查询", "shopQuery", null);
         shopMenuList.add(shopList);
         shopMenuList.add(shopQuery);
         //menuList= new Menu(1, "商品管理", null, shopMenuList);
-        menuList.add(new Menu(1, "商品管理", null, shopMenuList));
+        menuList.add(new Menu(1, "商品管理", "shopManager", shopMenuList));
 
-        Menu userList = new Menu(201, "用户列表", null, null);
-        Menu userQuery = new Menu(202, "用户查询", null, null);
+        Menu userList = new Menu(201, "用户列表", "userList", null);
+        Menu userQuery = new Menu(202, "用户查询", "userQuery", null);
         userMenuList.add(userList);
         userMenuList.add(userQuery);
-        menuList.add(new Menu(2, "用户管理", null, userMenuList));
+        menuList.add(new Menu(2, "用户管理", "userManager", userMenuList));
     }
 
     @Override

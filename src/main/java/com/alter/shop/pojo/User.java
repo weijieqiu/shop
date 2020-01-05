@@ -17,9 +17,37 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    String id;
-    String username;
-    String password;
+    /**
+     * 用户 id
+     */
+   private String id;
+    /**
+     * 用户名
+     */
+    private String username;
+    /**
+     * 密码
+     */
+    private String password;
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 电话
+     */
+    private String telephone;
+
+    /**
+     * 角色
+     */
+    private String role;
+
+    /**
+     * 状态
+     */
+    private String status;
 
 
 

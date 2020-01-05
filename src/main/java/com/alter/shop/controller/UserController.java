@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,7 +34,7 @@ public class UserController {
 
     @PassToken
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public Result login(@Valid User user , BindingResult bindingResult){
+    public Result login(@RequestBody User user , BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             throw new RuntimeException(bindingResult.getFieldError().toString());
         }
@@ -85,6 +86,14 @@ public class UserController {
     @RequestMapping("/getmessage")
     public Result getmessage(){
         return Result.success("你已经通过验证");
+    }
+
+
+    @UserLoginToken
+    @GetMapping("/getUserList")
+    public Result getUserList(@RequestParam(value = "query", required = false) String query, @RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize){
+        List<User> userList = userService.getUserList();
+        return Result.success("获取用户列表成功", userList);
     }
 
 

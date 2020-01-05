@@ -1,3 +1,31 @@
+# 2020-01-05
+- 获取用户列表接口完成
+```json
+{
+  "status": "200",
+  "message": "获取用户列表成功",
+  "data": [
+    {
+      "id": "1",
+      "username": "Admin",
+      "password": "Admin123.",
+      "email": "Admin@123.com",
+      "telephone": "123",
+      "role": "超级管理员",
+      "status": "启用"
+    },
+    {
+      "id": "2",
+      "username": "User",
+      "password": "User123.",
+      "email": "User@123.com",
+      "telephone": "123",
+      "role": "用户",
+      "status": "启用"
+    }
+  ]
+}
+```
 # 2020-01-04
 - 获取商品列表接口完成
 ```json

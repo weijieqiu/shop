@@ -4,6 +4,8 @@ package com.alter.shop.service;
 import com.alter.shop.pojo.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @PackageName: com.example.studyjwt.service
  * @ClassName: UserService
@@ -15,5 +17,6 @@ import org.springframework.stereotype.Service;
 public interface UserService {
     User getUser(String id);
     User getUserByName(String name);
+    List<User> getUserList();
 
 }
