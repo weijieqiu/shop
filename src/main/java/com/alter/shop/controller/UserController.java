@@ -92,7 +92,7 @@ public class UserController {
     @UserLoginToken
     @GetMapping("/getUserList")
     public Result getUserList(@RequestParam(value = "query", required = false) String query, @RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize){
-        List<User> userList = userService.getUserList();
+        List<User> userList = userService.getUserList(query, pageNum, pageSize);
         return Result.success("获取用户列表成功", userList);
     }
 

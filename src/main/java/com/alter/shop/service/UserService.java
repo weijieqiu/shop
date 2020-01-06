@@ -17,6 +17,6 @@ import java.util.List;
 public interface UserService {
     User getUser(String id);
     User getUserByName(String name);
-    List<User> getUserList();
+    List<User> getUserList(String query, Integer pageNum, Integer pageSize);
 
 }
