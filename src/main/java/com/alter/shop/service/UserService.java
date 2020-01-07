@@ -18,5 +18,7 @@ public interface UserService {
     User getUser(String id);
     User getUserByName(String name);
     List<User> getUserList(String query, Integer pageNum, Integer pageSize);
+    int getUserTotal();
+    boolean updateUserStatus(String id, String status);
 
 }

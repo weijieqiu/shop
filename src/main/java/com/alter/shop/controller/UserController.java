@@ -92,8 +92,22 @@ public class UserController {
     @UserLoginToken
     @GetMapping("/getUserList")
     public Result getUserList(@RequestParam(value = "query", required = false) String query, @RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize){
+        Map<String, Object> map = new HashMap<>();
+
         List<User> userList = userService.getUserList(query, pageNum, pageSize);
-        return Result.success("获取用户列表成功", userList);
+        map.put("userList", userList);
+        map.put("total", userService.getUserTotal());
+        return Result.success("获取用户列表成功", map);
+    }
+
+
+    @UserLoginToken
+    @GetMapping("/updateUserStatus")
+    public Result updateUserStatus(@RequestParam("id") String id, @RequestParam("status") String status){
+        Map<String, Object> map = new HashMap<>();
+        map.put("isChangeStatus", userService.updateUserStatus(id, status) );
+        map.put("userList", userService.getUser(id));
+        return Result.success("用户状态修改成功", map);
     }
 
 

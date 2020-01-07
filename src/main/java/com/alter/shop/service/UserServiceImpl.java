@@ -71,7 +71,11 @@ public class UserServiceImpl implements UserService {
         int fromIndex = (pageNum-1) * pageSize;
         int toIndex = pageNum  * pageSize;
         //查询多少行数据 分页类里默认30行
-         users = userList.subList(fromIndex, toIndex);
+        if(toIndex>userList.size()){
+            users = userList.subList(fromIndex, userList.size());
+        }else {
+            users = userList.subList(fromIndex, toIndex);
+        }
         for(User user : users){
             if(user.getUsername().contains(query)){
                 usersRex.add(user);
@@ -88,6 +92,22 @@ public class UserServiceImpl implements UserService {
             }
         }
 
+    }
+
+    @Override
+    public int getUserTotal() {
+        return this.userList.size();
+    }
+
+    @Override
+    public boolean updateUserStatus(String id, String status) {
+        for (User user : this.userList){
+            if(user.getId().equals(id)){
+                user.setStatus(status);
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
