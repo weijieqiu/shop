@@ -8,6 +8,7 @@ import com.alter.shop.utils.Result;
 import com.alter.shop.utils.TokenUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -96,7 +97,12 @@ public class UserController {
 
         List<User> userList = userService.getUserList(query, pageNum, pageSize);
         map.put("userList", userList);
-        map.put("total", userService.getUserTotal());
+        if(StringUtils.isEmpty(query)){
+            map.put("total", userService.getUserTotal());
+        }else {
+            map.put("total", userList.size());
+        }
+
         return Result.success("获取用户列表成功", map);
     }
 
@@ -108,6 +114,7 @@ public class UserController {
         map.put("isChangeStatus", userService.updateUserStatus(id, status) );
         map.put("userList", userService.getUser(id));
         return Result.success("用户状态修改成功", map);
+        //return Result.fail("失败");
     }
 
 

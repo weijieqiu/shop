@@ -4,6 +4,7 @@ package com.alter.shop.service;
 import com.alter.shop.pojo.User;
 import com.alter.shop.utils.PageBean;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -73,6 +74,8 @@ public class UserServiceImpl implements UserService {
         //查询多少行数据 分页类里默认30行
         if(toIndex>userList.size()){
             users = userList.subList(fromIndex, userList.size());
+        }else if(!StringUtils.isEmpty(query)) {
+            users = userList;
         }else {
             users = userList.subList(fromIndex, toIndex);
         }
